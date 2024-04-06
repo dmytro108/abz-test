@@ -1,0 +1,14 @@
+wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+sudo mv wp-cli.phar /usr/local/bin/wp
+chmod +x wp-cli.phar
+
+sudo cp wp-config.php /usr/share/nginx/html/
+sudo chown nginx /usr/share/nginx/html/wp-config.php
+
+sudo -u nginx wp core install --path=/usr/share/nginx/html 
+     --title="ABZ-Test" \
+     --admin_user=admin \
+     --admin_password=${admin_password} \
+     --admin_email=admin@test.com \
+     --skip-email \
+     --url=${website_url}

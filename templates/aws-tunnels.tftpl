@@ -1,0 +1,5 @@
+%{ for wp_ipinstance in app_servers ~}
+aws ec2-instance-connect open-tunnel --instance-id ${wp_instance.instance_id} --local-port 2020
+%{ endfor ~}
+
+
